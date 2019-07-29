@@ -3,23 +3,23 @@
 pkgbase=artwork-manjaro-cinnamon
 pkgname=('artwork-cinnamon-minimal' 'cinnamon-wallpapers')
 _grepo=gnome-backgrounds
-_gver=3.28.0
-pkgver=20180521
-pkgrel=2
+_gver=3.32.0
+pkgver=20190729
+pkgrel=1
 pkgdesc="Wallpapers for Manjaro Cinnamon"
 arch=('any')
 license=('GPL3')
 makedepends=('git'
     'glib2'
     'meson')
-default="adapta-maia.jpg" # default wallpaper to be packaged in artwork-minimal
-greeter_default="cinnamon-adapta-maia.jpg" # default background
+greeter_default="cinnamon-adapta-maia.jpg" # default greeter background
+default=$greeter_default # default wallpaper to be packaged in artwork-minimal
 target="/usr/share/backgrounds/cinnamon"
 _gurl="https://download.gnome.org/sources/$_grepo"
 _murl="https://github.com/oberon2007/$pkgbase"
 source=("$_gurl/${_gver:0:4}/$_grepo-$_gver.tar.xz"
     "git+$_murl.git")
-sha256sums=('b25b963d9d1ce076b489ef1e85c6540166f2312c77132f4ec0ecc90f3da8f1e1'
+sha256sums=('3f53c31bc9ff31b27408159afe77d06875174bc554e4e7c225a4d5d16acbb3e8'
             'SKIP')
 
 pkgver() {
@@ -66,5 +66,6 @@ package_artwork-cinnamon-minimal() {
 package_cinnamon-wallpapers() {
     msg "build manjaro-cinnamon backgrounds"
     make -C "${pkgbase}/backgrounds" install DESTDIR="$pkgdir"
-    rm $pkgdir/$target/{$default,$greeter_default}
+    rm $pkgdir/$target/$greeter_default
+    # rm $pkgdir/$target/$default
 }
