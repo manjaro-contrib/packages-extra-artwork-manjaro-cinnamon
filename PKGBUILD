@@ -1,6 +1,10 @@
-# Contributor: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer:
+# Contributor: Bernhard Landauer <bernhard@manjaro.org>
 
-pkgname=('artwork-cinnamon-minimal' 'cinnamon-wallpapers')
+pkgname=(
+  'artwork-cinnamon-minimal'
+  'cinnamon-wallpapers'
+)
 pkgbase=artwork-manjaro-cinnamon
 pkgver=20190729
 pkgrel=2
@@ -10,7 +14,11 @@ pkgdesc="Wallpapers for Manjaro Cinnamon"
 arch=('any')
 url="https://github.com/oberon-manjaro/artwork-manjaro-cinnamon"
 license=('GPL-3.0-or-later')
-makedepends=('git' 'glib2' 'meson')
+makedepends=(
+  'git'
+  'glib2'
+  'meson'
+)
 _commit=ced74fb432e04f9fea20ddb4e7d8a6d2e2cab12a
 source=("https://download.gnome.org/sources/gnome-backgrounds/${_gver:0:4}/${_grepo}-${_gver}.tar.xz"
         "git+https://github.com/oberon-manjaro/artwork-manjaro-cinnamon.git#commit=${_commit}")
